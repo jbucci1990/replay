@@ -1,0 +1,23 @@
+from xlrd import open_workbook
+from easygui import *
+
+filename = fileopenbox(msg=None, title=None, default= "*.xlsx")
+book = open_workbook(filename)
+
+sheet = book.sheet_by_index(0)
+
+
+def calc(x):
+	for i in x:
+		total = 0
+		for row in range(400):
+			if sheet.cell_value(row, 29) == i:
+				total += 1
+		print str(i) + " has a total of " + str(total) + " replays."
+
+
+
+
+name_List = ["Tim Akins", "JJ Bucci", "Tom Butto", "Chris Carey", "Ryan Burns", "Andrew Fried", "Andrew Maple", "Brian Richman", "Brian Smith", "Chris Hein", "Dan Courtright", "Matt Mendez", "Matthew Helvick", "Nick Della Torri", "Randy Mullins", "Steve Kultzow"]
+
+calc(name_List)
